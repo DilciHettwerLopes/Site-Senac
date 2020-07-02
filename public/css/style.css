@@ -1,0 +1,19 @@
+#jumbotron {
+    background-color: #003669!important;
+}
+.map-container iframe{
+    height:100%;
+    width:100%;
+    padding: 0%
+}
+h1, h2, h5 {
+    font-family: Georgia, Times, 'Times New Roman', serif;
+}
+#menu{
+    margin-top: 5px;
+    border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+}
+.active{
+    font-weight: bold;
+}

@@ -1,6 +1,21 @@
 <?php
-require_once "includes/conecta.php";
-require_once "includes/header.php";//faz a inclusão do arquivo de cabeçalho
+session_start();
+if( $_SESSION['logado']!=true){
+    header('Location:login.php');
+    exit();
+}
+require_once "../includes/conecta.php";
+
+$jsonrequest = @$_GET['jsonrequest'];
+if (empty($jsonrequest) || @$jsonrequest != '1') {
+    require_once "includes/header.php";//faz a inclusão do arquivo de cabeçalho
+}
+
+    if($_SESSION['mensagem']){
+        echo $_SESSION['mensagem'];
+        unset($_SESSION['mensagem']);
+    }
+
     $pagina = @$_GET['pagina'];
     if(empty($pagina)){//verifica se tem algo na url
         require_once "arquivos/home.php";//se não tiver carrega a home.php
@@ -11,4 +26,7 @@ require_once "includes/header.php";//faz a inclusão do arquivo de cabeçalho
             require_once "arquivos/404.php";
         }
     }
-require_once "includes/footer.php";////faz a inclusão do arquivo de rodapé
+
+if (empty($jsonrequest) || @$jsonrequest != '1') {
+    require_once "includes/footer.php";////faz a inclusão do arquivo de rodapé
+}
